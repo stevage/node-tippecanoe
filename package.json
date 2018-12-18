@@ -4,7 +4,6 @@
   "description": "A superficial wrapper around Mapbox's tippecanoe.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",
   "license": "Apache-2.0",
@@ -14,5 +13,5 @@
     "shelljs": "^0.8.3"
   }, "files": [
     "index.js"
-  ]
+  ], "repository": "stevage/node-tippecanoe"
 }
