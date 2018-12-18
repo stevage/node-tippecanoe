@@ -1,17 +1,18 @@
 {
   "name": "tippecanoe",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A superficial wrapper around Mapbox's tippecanoe.",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Steve Bennett <me@stevebennett.me> (http://stevebennett.me)",
   "license": "Apache-2.0",
   "dependencies": {
     "colors": "^1.3.3",
     "kebab-case": "^1.0.0",
     "shelljs": "^0.8.3"
-  }, "files": [
+  },
+  "files": [
     "index.js"
-  ], "repository": "stevage/node-tippecanoe"
+  ],
+  "repository": "stevage/node-tippecanoe"
 }
