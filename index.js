@@ -7,6 +7,7 @@ function shellExec(cmd, echo) {
         console.log(cmd.green);
     }
     shell.exec(cmd);
+    return cmd;
 }
 
 function tippecanoe(layerFiles, params, options = {}) {
@@ -18,8 +19,7 @@ function tippecanoe(layerFiles, params, options = {}) {
         return '--' + kebabCase(k) + predicate;
     }
     let paramsStr = Object.keys(params).map(prop).join(' ');
-    shellExec(`tippecanoe ${paramsStr} ${layerFiles.join(' ')}`, options.echo);
-    return cmd;
+    return shellExec(`tippecanoe ${paramsStr} ${layerFiles.join(' ')}`, options.echo);
 }
 
 module.exports = tippecanoe;
