@@ -1,6 +1,6 @@
 {
   "name": "tippecanoe",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A superficial wrapper around Mapbox's tippecanoe.",
   "main": "index.js",
   "scripts": {},
@@ -15,5 +15,13 @@
     "index.js"
   ],
   "repository": "stevage/node-tippecanoe",
-  "keywords": ["tippecanoe", "mapbox", "vector tiles", "geojson", "mapbox-gl-js", "maps", "shell"]
+  "keywords": [
+    "tippecanoe",
+    "mapbox",
+    "vector tiles",
+    "geojson",
+    "mapbox-gl-js",
+    "maps",
+    "shell"
+  ]
 }
