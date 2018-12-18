@@ -14,5 +14,6 @@
   "files": [
     "index.js"
   ],
-  "repository": "stevage/node-tippecanoe"
+  "repository": "stevage/node-tippecanoe",
+  "keywords": ["tippecanoe", "mapbox", "vector tiles", "geojson", "mapbox-gl-js", "maps", "shell"]
 }
