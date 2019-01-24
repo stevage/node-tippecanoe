@@ -11,15 +11,23 @@ function shellExec(cmd, echo) {
 }
 
 function tippecanoe(layerFiles, params, options = {}) {
-    function prop(k) {
-        if (params[k] === false) {
-            return '';
-        }
-        const predicate = params[k] === true ? '' : `=${params[k]}`;
-        return '--' + kebabCase(k) + predicate;
+    function quotify(s) {
+        s = String(s);
+        return s.match(/\s/) ? `'${s}'` : s;
     }
-    let paramsStr = Object.keys(params).map(prop).join(' ');
-    return shellExec(`tippecanoe ${paramsStr} ${layerFiles.join(' ')}`, options.echo);
+    function makeParam(k) {
+        const val = params[k];
+        const param = '--' + kebabCase(k);
+        if (val === false) {
+            return '';
+        } else if (val === true) {
+            return param;
+        } else {
+            return param + `=${quotify(val)}`
+        }
+    }
+    let paramsStr = Object.keys(params).map(makeParam).filter(Boolean).join(' ');
+    return shellExec(`tippecanoe ${paramsStr} ${layerFiles.map(quotify).join(' ')}`, options.echo);
 }
 
 module.exports = tippecanoe;

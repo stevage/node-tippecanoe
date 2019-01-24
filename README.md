@@ -21,8 +21,11 @@ tippecanoe([ inputFile1, inputFile2, ...], { parameters }, { options });
 ### Example
 
 ```js
-tippecanoe(['buildings.geojson', {
+tippecanoe(['buildings-50k.json'], {
     zg: true,
+    readParallel: true,
+    simplification: 10,
+    layer: 'buildings',
     output: 'buildings.mbtiles',
     description: 'Building footprints in the municipality of Hobbiton.'
 });
