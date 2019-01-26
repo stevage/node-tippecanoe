@@ -15,18 +15,26 @@ function tippecanoe(layerFiles, params, options = {}) {
         s = String(s);
         return s.match(/\s/) ? `'${s}'` : s;
     }
-    function makeParam(k) {
-        const val = params[k];
-        const param = '--' + kebabCase(k);
-        if (val === false) {
+    function makeParam(key, value) {
+        if (Array.isArray(value)) {
+            return value.map(v => makeParam(key, v)).join(' ');
+        }
+        const param = '--' + kebabCase(key);
+        if (value === false) {
             return '';
-        } else if (val === true) {
+        } else if (value === true) {
             return param;
         } else {
-            return param + `=${quotify(val)}`
+            return param + `=${quotify(value)}`
         }
     }
-    let paramsStr = Object.keys(params).map(makeParam).filter(Boolean).join(' ');
+    let paramsStr = Object.keys(params)
+        .map(k => makeParam(k, params[k]))
+        .filter(Boolean)
+        .join(' ');
+    layerFiles = !Array.isArray(layerFiles) ? [layerFiles] : layerFiles;
+   
+        
     return shellExec(`tippecanoe ${paramsStr} ${layerFiles.map(quotify).join(' ')}`, options.echo);
 }
 
