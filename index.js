@@ -10,10 +10,14 @@ function shellExec(cmd, echo) {
     return cmd;
 }
 
-function tippecanoe(layerFiles, params, options = {}) {
+function tippecanoe(layerFiles=[], params, options = {}) {
     function quotify(s) {
-        s = String(s);
-        return s.match(/\s/) ? `'${s}'` : s;
+        if (typeof s === 'object') {
+            s = JSON.stringify(s);
+        } else {
+            s = String(s);
+        }
+        return s.match(/[ "[]/) ? `'${s}'` : s;
     }
     function makeParam(key, value) {
         if (Array.isArray(value)) {
