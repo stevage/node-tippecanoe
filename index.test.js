@@ -12,6 +12,8 @@ test('test everything ', () => {
     shelljs.exec = jest.fn(); // automock isn't working for some reason
     tippecanoe(['buildings.geojson', 'more buildings.geojson'], {
         zg: true,
+        B: 11,
+        X: true,
         notThis: false,
         readParallel: true,
         simplification: 10,
@@ -19,7 +21,7 @@ test('test everything ', () => {
         output: 'buildings.mbtiles',
         description: 'Building footprints'
     });
-    expect(shelljs.exec).toBeCalledWith("tippecanoe --zg --read-parallel --simplification=10 --layer=buildings --output=buildings.mbtiles --description='Building footprints' buildings.geojson 'more buildings.geojson'");    
+    expect(shelljs.exec).toBeCalledWith("tippecanoe -zg -B11 -X --read-parallel --simplification=10 --layer=buildings --output=buildings.mbtiles --description='Building footprints' buildings.geojson 'more buildings.geojson'");    
 });
 
 test('parameters given as arrays should be repeated individually', () => {
@@ -29,7 +31,7 @@ test('parameters given as arrays should be repeated individually', () => {
     expect(shelljs.exec).toBeCalledWith("tippecanoe --include=name --include=id buildings.geojson");    
 });
 
-test.only('named-layer object', () => {
+test('named-layer object', () => {
     shelljs.exec = jest.fn();
     tippecanoe(undefined, {
         namedLayer: [{

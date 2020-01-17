@@ -23,14 +23,15 @@ function tippecanoe(layerFiles=[], params, options = {}) {
         if (Array.isArray(value)) {
             return value.map(v => makeParam(key, v)).join(' ');
         }
-        const param = '--' + kebabCase(key);
-        if (value === false) {
+        if (value === false) { // why do we do this?
             return '';
-        } else if (value === true) {
-            return param;
-        } else {
-            return param + `=${quotify(value)}`
         }
+        const short = key.length <= 2;
+        const param = short ? `-${key}` : `--${kebabCase(key)}`;
+        if (value === true) {
+            return param;
+        }
+        return short ? `${param}${quotify(value)}` : `${param}=${quotify(value)}`
     }
     let paramsStr = Object.keys(params)
         .map(k => makeParam(k, params[k]))

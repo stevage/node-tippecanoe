@@ -16,6 +16,7 @@ tippecanoe([ inputFile1, inputFile2, ...], { parameters }, { options });
   * `zg: true`: passed as `-zg`
   * `maximumZoom: 'g'`: passed as `--maximum-zoom=g`
   * `include: ['name', 'id']`: passed as `--include=name --include=id`
+  * `namedLayer: { file: 'towns20.geojson', name: 'towns' }`: passed as `--named-layer='{"file":"towns20.geojson","name:"towns"}'`
 * `options`: an object containing options for this library itself. Currently supports:
   * `echo: true`, to print out the command line as it is called.
 
@@ -29,6 +30,6 @@ tippecanoe(['buildings-50k.json'], {
     layer: 'buildings',
     output: 'buildings.mbtiles',
     description: 'Building footprints in the municipality of Hobbiton.'
-});
+}, { echo: true });
 ```
 
