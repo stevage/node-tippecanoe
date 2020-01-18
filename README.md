@@ -9,7 +9,12 @@ You must install Tippecanoe separately. It must be on the PATH.
 ```js
 const tippecanoe = require('tippecanoe');
 tippecanoe([ inputFile1, inputFile2, ...], { parameters }, { options });
+
+const tippecanoe = require('tippecanoe').tippecanoeAsync;
+tippecanoeAsync([ inputFile1, inputFile2, ...], { parameters }, { options }).then(...);
 ```
+
+
 
 * `inputFile1` etc: names of input files
 * `parameters`: an object consisting of camelCase keys passed to Tippecanoe as kebab-case. Each key should be in one of these formats:
