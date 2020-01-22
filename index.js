@@ -28,7 +28,7 @@ function tippecanoe(layerFiles=[], params, options = {}) {
         } else {
             s = String(s);
         }
-        return s.match(/[ "[]/) ? `'${s}'` : s;
+        return !options.async && s.match(/[ "[]/) ? `'${s}'` : s;
     }
     function makeParam(key, value) {
         if (Array.isArray(value)) {
