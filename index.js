@@ -32,7 +32,7 @@ function tippecanoe(layerFiles=[], params, options = {}) {
     }
     function makeParam(key, value) {
         if (Array.isArray(value)) {
-            return value.map(v => makeParam(key, v)).join(' ');
+            return value.map(v => makeParam(key, v));
         }
         if (value === false) { // why do we do this?
             return '';
@@ -50,7 +50,7 @@ function tippecanoe(layerFiles=[], params, options = {}) {
     layerFiles = !Array.isArray(layerFiles) ? [layerFiles] : layerFiles;
    
     // const cmd = `tippecanoe ${paramsStr} ${layerFiles.map(quotify).join(' ')}`;
-    const args = [...paramStrs, ...layerFiles.map(quotify)];
+    const args = [...paramStrs, ...layerFiles.map(quotify)].flat();
     if (options.async) {
         return execAsync(args, options.echo);
     } else {
